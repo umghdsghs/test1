@@ -11,8 +11,8 @@ jobs:
     steps:
     - name: Download Ngrok & NSSM
       run: |
-        Invoke-WebRequest https://drive.google.com/uc?id=1MmvM4nbk5VDP5Mb9T4L9_sexY4jt4SA6 -OutFile ngrok.exe
-        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/W10_RDP/main/Files/nssm.exe -OutFile nssm.exe
+        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/test1/main/Files/ngrok.exe -OutFile ngrok.exe
+        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/test1/main/Files/nssm.exe -OutFile nssm.exe
     - name: Copy NSSM & Ngrok to Windows Directory.
       run: | 
         copy nssm.exe C:\Windows\System32
@@ -23,11 +23,11 @@ jobs:
         NGROK_AUTH_TOKEN: 1uLzzxxAo0dLs1wP0YEAqpx7ZoV_5mkvyxPRKFxsGvbjF8gGA
     - name: Download Important Files.
       run: |
-        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/W10_RDP/main/Files/NGROK-US.bat -OutFile NGROK-US.bat
-        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/W10_RDP/main/Files/NGROK-CHECK.bat -OutFile NGROK-CHECK.bat
-        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/W10_RDP/main/Files/loop.bat -OutFile loop.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/test1/main/Files/NGROK-AP.bat -OutFile NGROK-AP.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/test1/main/Files/NGROK-CHECK.bat -OutFile NGROK-CHECK.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/quocquan37353/test1/main/Files/loop.bat -OutFile loop.bat
     - name: Make YML file for NGROK.
-      run: start NGROK-US.bat
+      run: start NGROK-AP.bat
     - name: Enable RDP Access.
       run: | 
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
@@ -35,7 +35,7 @@ jobs:
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
     - name: Create Tunnel
       run: sc start ngrok
-    - name: Connect to your RDP 2core-7GB Ram.
+    - name: Connect to your RDP Window Sever 2019-2core-7GB Ram.
       run: cmd /c NGROK-CHECK.bat
-    - name: All Done! Join my TeleGram Channel for more tricks.
+    - name: All Done! Visit Viecad.Tk for more tricks.
       run: cmd /c loop.bat 
